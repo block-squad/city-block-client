@@ -3,8 +3,8 @@
   <div class="mainNav">
     <nav class="navbar" role="navigation" aria-label="main navigation">
       <div class="navbar-brand">
-      <a class="navbar-item" href="http://bulma.io">
-        <img src="http://bulma.io/images/bulma-logo.png" alt="Bulma: a modern CSS framework based on Flexbox" width="112" height="28">
+      <a class="navbar-item" >
+        <img src="../assets/CB-logo.png" alt="cityBlock" >
       </a>
       <button class="button navbar-burger">
         <span></span>
@@ -27,3 +27,10 @@ export default {
   name: 'mainNav'
 }
 </script>
+
+<style scoped>
+  .navbar-brand.navbar-item a img {
+    height: 200px;
+  }
+
+</style>
