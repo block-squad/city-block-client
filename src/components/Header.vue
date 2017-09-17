@@ -1,0 +1,55 @@
+<template>
+  <div class="container">
+  <div class="header">
+    <nav class="navbar" role="navigation" aria-label="main navigation">
+      <div class="navbar-brand">
+      <a class="navbar-item" href="http://bulma.io">
+        <img src="http://bulma.io/images/bulma-logo.png" alt="Bulma: a modern CSS framework based on Flexbox" width="112" height="28">
+      </a>
+      <button class="button navbar-burger">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      </div>
+      <div class="navbar-end">
+        <a class="navbar-item"> About</a>
+        <a class="navbar-item"> Sign Up</a>
+        <a class="navbar-item"> Sign In </a>
+      </div>
+    </nav>
+  </div>
+  </div>
+</template>
+
+<script>
+export default {
+  name: 'header',
+  data () {
+    return {
+      msg: 'Welcome to Your Vue.js App'
+    }
+  }
+}
+</script>
+
+<!-- Add "scoped" attribute to limit CSS to this component only -->
+<style scoped>
+h1, h2 {
+  font-weight: normal;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+li {
+  display: inline-block;
+  margin: 0 10px;
+}
+
+a {
+  color: #42b983;
+}
+</style>
