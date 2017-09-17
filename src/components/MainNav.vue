@@ -14,7 +14,7 @@
       </div>
       <div class="navbar-end">
         <a class="navbar-item"> About</a>
-        <a class="navbar-item"> Sign Up</a>
+        <router-link to='/signup' class="navbar-item"> Sign Up</router-link>
         <a class="navbar-item"> Sign In</a>
       </div>
     </nav>
