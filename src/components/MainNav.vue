@@ -3,9 +3,9 @@
   <div class="mainNav">
     <nav class="navbar" role="navigation" aria-label="main navigation">
       <div class="navbar-brand">
-      <a class="navbar-item" >
+      <router-link to="/" class="navbar-item" >
         <img src="../assets/CB-logo.png" alt="cityBlock" >
-      </a>
+      </router-link>
       <button class="button navbar-burger">
         <span></span>
         <span></span>
