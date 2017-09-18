@@ -13,6 +13,7 @@
     import Feed from './Feed'
     import Signin from './Signin'
 
+
     export default {
       components: {
         MainNav,
