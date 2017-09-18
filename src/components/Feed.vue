@@ -1,7 +1,7 @@
 <template>
   <div class="feed">
     <div class="container">
-      <div class="columns is-desktop">
+      <div class="columns is-desktop is-multiline">
         <project v-for="project in projects" :project="project" key=""></project>
       </div>
     </div>
