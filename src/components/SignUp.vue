@@ -1,6 +1,5 @@
 <template>
   <div class="signUp">
-    <mainNav></mainNav>
     <div class="container">
       <div class="field">
         <label class="label">Name</label>
@@ -54,19 +53,11 @@
         </div>
       </div>
     </div>
-    <bottom></bottom>
   </div>
 </template>
 
 <script>
-import MainNav from './MainNav'
-import Bottom from './Bottom'
-
 export default {
-  components: {
-    MainNav,
-    Bottom
-  },
   methods: {
     signUp() {
       //this is where the auth code would go

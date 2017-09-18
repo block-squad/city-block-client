@@ -1,15 +1,22 @@
 <template>
   <div id="app">
+    <mainNav></mainNav>
     <router-view></router-view>
+    <bottom></bottom>
   </div>
 </template>
 
 <script>
+import MainNav from './components/MainNav'
+import Bottom from './components/Bottom'
 
 export default {
   name: 'app',
-
+  components: {
+    MainNav,
+    Bottom
   }
+}
 
 </script>
 

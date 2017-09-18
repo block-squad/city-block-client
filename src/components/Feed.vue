@@ -9,7 +9,6 @@
 </template>
 
 <script>
-
 import Project from './Project'
 
 export default {
