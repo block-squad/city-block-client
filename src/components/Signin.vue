@@ -1,6 +1,8 @@
 <template>
-  <div class="signUp container">
-    <mainNav></mainNav>
+  <div class="signin">
+    <div class="modal">
+  <div class="modal-background"></div>
+  <div class="modal-content">
     <div class="field">
   <label class="label">Name</label>
   <div class="control">
@@ -19,24 +21,10 @@
       <i class="fa fa-check"></i>
     </span>
   </div>
-  <p class="help is-success">This username is available</p>
 </div>
 
 <div class="field">
   <label class="label">Password</label>
-  <div class="control has-icons-left has-icons-right">
-    <input class="input is-danger" type="password" placeholder="Password">
-    <span class="icon is-small is-left">
-      <i class="fa fa-envelope"></i>
-    </span>
-    <span class="icon is-small is-right">
-      <i class="fa fa-warning"></i>
-    </span>
-  </div>
-</div>
-
-<div class="field">
-  <label class="label">Wallet Address</label>
   <div class="control has-icons-left has-icons-right">
     <input class="input is-danger" type="password" placeholder="Password">
     <span class="icon is-small is-left">
@@ -56,24 +44,18 @@
     <button class="button is-link">Cancel</button>
   </div>
 </div>
-    <bottom></bottom>
   </div>
+  <button class="modal-close is-large" aria-label="close"></button>
+</div>
+
+  </div>
+
 </template>
 
 <script>
-import MainNav from './MainNav'
-import Bottom from './Bottom'
 
 export default {
-  components: {
-    MainNav,
-    Bottom
-  },
-  methods: {
-    signUp() {
-      //this is where the auth code would go
-    }
-  }
+  name: 'signin'
 }
 
 </script>
