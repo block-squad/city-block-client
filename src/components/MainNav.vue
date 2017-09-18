@@ -15,13 +15,10 @@
         <div class="navbar-end">
           <router-link to='/about' class="navbar-item">About</router-link>
           <router-link to='/signup' class="navbar-item">Sign Up</router-link>
-          <a class="navbar-item" @click.prevent="isComponentModalActive = true">Sign In</a>
+          <router-link to='/signin' class="navbar-item">Sign In</router-link>
           <!-- <div class="navbar-item">
             <a class="button is-primary">Logout</a>
           </div> -->
-          <b-modal :active.sync="isComponentModalActive" has-modal-card>
-            <sign-in v-bind="formProps"></sign-in>
-          </b-modal>
         </div>
       </nav>
     </div>
@@ -29,28 +26,8 @@
 </template>
 
 <script>
-import SignIn from './SignIn'
 
 export default {
-  name: 'mainNav',
-  components: {
-    SignIn
-  },
-  data() {
-    return {
-      isComponentModalActive: false,
-      formProps: {
-        username: '',
-        password: ''
-      }
-    }
-  }
+  name: 'mainNav'
 }
 </script>
-
-<style scoped>
-  .navbar-brand.navbar-item a img {
-    height: 200px;
-  }
-
-</style>
