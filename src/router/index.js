@@ -23,5 +23,10 @@ export default new Router({
       name: 'About',
       component: About
     }
+    // {
+    //   path: '/signin',
+    //   name: 'SignIn',
+    //   component: SignIn
+    // }
   ]
 })

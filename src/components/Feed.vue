@@ -1,18 +1,10 @@
 <template>
-  <div class="feed container">
-    <div class="columns">
-      <project></project>
-      <div class="column">
-
-      </div>
-      <div class="column">
-
-      </div>
-      <div class="column">
-
+  <div class="feed">
+    <div class="container">
+      <div class="columns is-desktop is-multiline">
+        <project v-for="project in projects" :project="project" key=""></project>
       </div>
     </div>
-  </div>
   </div>
 </template>
 
@@ -24,7 +16,8 @@ export default {
   name: 'feed',
   components: {
     Project
-  }
+  },
+  props: ['projects']
 }
 
 </script>
