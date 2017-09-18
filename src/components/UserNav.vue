@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-  <div class="mainNav">
+  <div class="userNav">
     <nav class="navbar" role="navigation" aria-label="main navigation">
       <div class="navbar-brand">
       <a class="navbar-item" >
@@ -13,9 +13,8 @@
       </button>
       </div>
       <div class="navbar-end">
-        <router-link to='/about' class="navbar-item"> About</router-link>
-        <router-link to='/signup' class="navbar-item"> Sign Up</router-link>
-        <a class="navbar-item"> Sign In</a>
+        <router-link to='/create' class="navbar-item"> Create Project</router-link>
+        <router-link to='/' class="navbar-item"> Log Out</router-link>
       </div>
     </nav>
   </div>
@@ -24,7 +23,7 @@
 
 <script>
 export default {
-  name: 'mainNav'
+  name: 'userNav'
 }
 </script>
 

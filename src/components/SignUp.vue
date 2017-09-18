@@ -1,6 +1,7 @@
 <template>
-  <div class="signUp container">
+  <div class="signUp">
     <mainNav></mainNav>
+    <div class="container">
     <div class="field">
   <label class="label">Name</label>
   <div class="control">
@@ -56,6 +57,7 @@
     <button class="button is-link">Cancel</button>
   </div>
 </div>
+  </div>
     <bottom></bottom>
   </div>
 </template>
