@@ -1,0 +1,216 @@
+{
+  "contract_name": "Crowdsale",
+  "abi": [
+    {
+      "constant": false,
+      "inputs": [],
+      "name": "checkGoalReached",
+      "outputs": [],
+      "payable": false,
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "deadline",
+      "outputs": [
+        {
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "payable": false,
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "beneficiary",
+      "outputs": [
+        {
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "payable": false,
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "name": "balanceOf",
+      "outputs": [
+        {
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "payable": false,
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "fundingGoal",
+      "outputs": [
+        {
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "payable": false,
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "amountRaised",
+      "outputs": [
+        {
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "payable": false,
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "price",
+      "outputs": [
+        {
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "payable": false,
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [],
+      "name": "safeWithdrawal",
+      "outputs": [],
+      "payable": false,
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "name": "ifSuccessfulSendTo",
+          "type": "address"
+        },
+        {
+          "name": "fundingGoalInEthers",
+          "type": "uint256"
+        },
+        {
+          "name": "durationInMinutes",
+          "type": "uint256"
+        }
+      ],
+      "payable": false,
+      "type": "constructor"
+    },
+    {
+      "payable": true,
+      "type": "fallback"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "name": "beneficiary",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "name": "amountRaised",
+          "type": "uint256"
+        }
+      ],
+      "name": "GoalReached",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "name": "backer",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "name": "amount",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "name": "isContribution",
+          "type": "bool"
+        }
+      ],
+      "name": "FundTransfer",
+      "type": "event"
+    }
+  ],
+  "unlinked_binary": "0x60606040526006805461ffff19169055341561001a57600080fd5b60405160608061056f8339810160405280805191906020018051919060200180519150505b60008054600160a060020a031916600160a060020a038516179055670de0b6b3a76400008202600155603c810242016003555b5050505b6104ea806100856000396000f3006060604052361561008b5763ffffffff7c010000000000000000000000000000000000000000000000000000000060003504166301cb3b20811461012a57806329dcb0cf1461013f57806338af3eed1461016457806370a08231146101935780637a3a0e84146101c45780637b3e5e7b146101e9578063a035b1fe1461020e578063fd6b7ef814610233575b5b600654600090610100900460ff16156100a457600080fd5b5033600160a060020a038116600090815260056020526040908190208054349081019091556002805482019055917fe842aea7a5f1b01049d752008c53c52890b1a6daf660cf39e8eec506112bbdf691839060019051600160a060020a039093168352602083019190915215156040808301919091526060909101905180910390a15b50005b341561013557600080fd5b61013d610248565b005b341561014a57600080fd5b6101526102d1565b60405190815260200160405180910390f35b341561016f57600080fd5b6101776102d7565b604051600160a060020a03909116815260200160405180910390f35b341561019e57600080fd5b610152600160a060020a03600435166102e6565b60405190815260200160405180910390f35b34156101cf57600080fd5b6101526102f8565b60405190815260200160405180910390f35b34156101f457600080fd5b6101526102fe565b60405190815260200160405180910390f35b341561021957600080fd5b610152610304565b60405190815260200160405180910390f35b341561023e57600080fd5b61013d61030a565b005b60035442106102cd57600154600254106102bd576006805460ff191660011790556000546002547fec3f991caf7857d61663fd1bba1739e04abd4781238508cde554bb849d790c8591600160a060020a031690604051600160a060020a03909216825260208201526040908101905180910390a15b6006805461ff0019166101001790555b5b5b565b60035481565b600054600160a060020a031681565b60056020526000908152604090205481565b60015481565b60025481565b60045481565b60035460009042106104b75760065460ff1615156103e95750600160a060020a0333166000908152600560205260408120805490829055908111156103e957600160a060020a03331681156108fc0282604051600060405180830381858888f19350505050156103cd577fe842aea7a5f1b01049d752008c53c52890b1a6daf660cf39e8eec506112bbdf633826000604051600160a060020a039093168352602083019190915215156040808301919091526060909101905180910390a16103e9565b600160a060020a03331660009081526005602052604090208190555b5b5b60065460ff16801561040b575060005433600160a060020a039081169116145b156104b757600054600254600160a060020a039091169080156108fc0290604051600060405180830381858888f19350505050156104ac57600080546002547fe842aea7a5f1b01049d752008c53c52890b1a6daf660cf39e8eec506112bbdf692600160a060020a0390921691604051600160a060020a039093168352602083019190915215156040808301919091526060909101905180910390a16104b7565b6006805460ff191690555b5b5b5b5b505600a165627a7a7230582080147c7c8e3d0d03621cac450c155a55db95ed266d9f85f716736c51df43129d0029",
+  "networks": {
+    "1505770291644": {
+      "events": {
+        "0xec3f991caf7857d61663fd1bba1739e04abd4781238508cde554bb849d790c85": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": false,
+              "name": "beneficiary",
+              "type": "address"
+            },
+            {
+              "indexed": false,
+              "name": "amountRaised",
+              "type": "uint256"
+            }
+          ],
+          "name": "GoalReached",
+          "type": "event"
+        },
+        "0xe842aea7a5f1b01049d752008c53c52890b1a6daf660cf39e8eec506112bbdf6": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": false,
+              "name": "backer",
+              "type": "address"
+            },
+            {
+              "indexed": false,
+              "name": "amount",
+              "type": "uint256"
+            },
+            {
+              "indexed": false,
+              "name": "isContribution",
+              "type": "bool"
+            }
+          ],
+          "name": "FundTransfer",
+          "type": "event"
+        }
+      },
+      "links": {},
+      "address": "0x3aecc6d8529f63ed6bcfcc2c3752d7c9a96e26ba",
+      "updated_at": 1505771084788
+    }
+  },
+  "schema_version": "0.0.5",
+  "updated_at": 1505771084788
+}
