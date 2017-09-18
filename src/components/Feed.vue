@@ -1,7 +1,7 @@
 <template>
   <div class="feed container">
     <div class="columns">
-      <project></project>
+      <project v-for="project in projects" :project="project"></project>
       <div class="column">
 
       </div>
@@ -24,7 +24,8 @@ export default {
   name: 'feed',
   components: {
     Project
-  }
+  },
+  props: ['projects']
 }
 
 </script>

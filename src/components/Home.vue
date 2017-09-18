@@ -2,7 +2,7 @@
   <div class="home">
     <mainNav></mainNav>
     <signin></signin>
-    <feed></feed>
+    <feed :projects="projects"></feed>
     <bottom></bottom>
   </div>
 </template>
@@ -12,7 +12,7 @@
     import Bottom from './Bottom'
     import Feed from './Feed'
     import Signin from './Signin'
-
+    const url = "https://fast-reef-25356.herokuapp.com"
 
     export default {
       components: {
@@ -20,6 +20,17 @@
         Feed,
         Signin,
         Bottom
+      },
+      data() {
+        return {
+          projects: [],
+
+        }
+      },
+      async mounted() {
+        const data = await fetch(`${url}/projects`)
+        const response = await data.json()
+        this.projects = response
       }
     }
   </script>

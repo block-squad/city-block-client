@@ -12,22 +12,22 @@
           <div class="media-left">
           </div>
           <div class="media-content">
-            <p class="title is-4">Project Name</p>
+            <p class="title is-4">{{project.name}}</p>
             <p class="subtitle is-6">contract address</p>
           </div>
         </div>
         <div class="content">
-          description: this project was made to help the world be way better than it already is because we need a better world 
+          {{project.desc}}
           <br>
           <div class="columns">
             <div class="column">
-              Days Left
+              {{daysLeft}}
             </div>
             <div class="column">
-              Amount Raised
+              ${{project.money}}
             </div>
             <div class="column">
-              Target Amount
+              ${{project.target}}
             </div>
           </div>
         </div>
@@ -43,7 +43,19 @@
 <script>
 
 export default {
-  name: 'project'
+  name: 'project',
+  props: ['project'],
+  computed: {
+    daysLeft() {
+      let deadline = new Date(`
+        ${new Date(this.project.date).getMonth() + 3} /
+        ${new Date(this.project.date).getDate()} /
+        ${new Date(this.project.date).getFullYear()}
+        `)
+      return `${deadline.getMonth()}/${deadline.getDate()}/${deadline.getFullYear()}`
+    }
+  }
 }
+
 
 </script>
