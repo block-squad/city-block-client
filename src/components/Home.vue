@@ -12,7 +12,7 @@
     import Bottom from './Bottom'
     import Feed from './Feed'
     import Signin from './Signin'
-    const url = "https://fast-reef-25356.herokuapp.com"
+    const url = "https://city-block-server.herokuapp.com"
 
     export default {
       components: {
