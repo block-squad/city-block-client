@@ -1,7 +1,7 @@
 <template>
-  <div class="sidebar">
+  <section class="sidebar section">
     <h1>Hello?</h1>
-  </div>
+  </section>
 </template>
 
 <script>
