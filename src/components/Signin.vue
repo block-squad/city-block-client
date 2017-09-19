@@ -1,30 +1,32 @@
 <template>
-  <div class="signin">
-    <form v-on:submit.prevent="signIn">
-      <div class="container">
-        <div class="field">
-          <label class="label">Username</label>
-          <div class="control has-icons-left has-icons-right">
-            <input v-model="signInForm.username" class="input" type="text" placeholder="Username">
+  <section class="section">
+    <div class="signin">
+      <form v-on:submit.prevent="signIn">
+        <div class="container">
+          <div class="field">
+            <label class="label">Username</label>
+            <div class="control has-icons-left has-icons-right">
+              <input v-model="signInForm.username" class="input" type="text" placeholder="Username">
+            </div>
+          </div>
+          <div class="field">
+            <label class="label">Password</label>
+            <div class="control has-icons-left has-icons-right">
+              <input v-model="signInForm.password" class="input" type="password" placeholder="Password">
+            </div>
+          </div>
+          <div class="field is-grouped">
+            <div class="control">
+              <button class="button is-primary">Submit</button>
+            </div>
+            <div class="control">
+              <button class="button is-link">Cancel</button>
+            </div>
           </div>
         </div>
-        <div class="field">
-          <label class="label">Password</label>
-          <div class="control has-icons-left has-icons-right">
-            <input v-model="signInForm.password" class="input" type="password" placeholder="Password">
-          </div>
-        </div>
-        <div class="field is-grouped">
-          <div class="control">
-            <button class="button is-primary">Submit</button>
-          </div>
-          <div class="control">
-            <button class="button is-link">Cancel</button>
-          </div>
-        </div>
-      </div>
-    </form>
-  </div>
+      </form>
+    </div>
+  </section>
 </template>
 
 <script>

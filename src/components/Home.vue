@@ -1,19 +1,19 @@
 <template>
   <div class="home">
-    <signin></signin>
-    <feed :projects="projects"></feed>
+    <section class="section">
+      <feed :projects="projects"></feed>
+    </section>
   </div>
 </template>
 
 <script>
 import Feed from './Feed'
-import SignIn from './SignIn'
+
 const url = "https://city-block-server.herokuapp.com"
 
 export default {
   components: {
-    Feed,
-    SignIn
+    Feed
   },
   data() {
     return {
