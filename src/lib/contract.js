@@ -47,7 +47,7 @@ App = {
     // var projectId = parseInt($(event.target).data('id'));
     // TODO: capture project id from target address??
 
-    var adoptionInstance;
+    var contributeInstance;
 
     web3.eth.getAccounts(function(error, accounts) {
       if (error) {
@@ -56,19 +56,23 @@ App = {
 
       var account = accounts[0];
 
-      App.contracts.Adoption.deployed().then(function(instance) {
-        adoptionInstance = instance;
+      App.contracts.CrowdFunding.deployed().then(function(instance) {
+        contributeInstance = instance;
 
-        return adoptionInstance.adopt(petId, {from: account});
+        return contributeInstance.adopt(projectId, {from: account});
       }).then(function(result) {
-        return App.markAdopted();
+        return App.markContribute();
       }).catch(function(err) {
         console.log(err.message);
       });
     });
   },
 
-  markFinished: function(adopters, account) {
+  markContribute: function(contriutors, account){
+
+  }
+
+  markFinished: function(contriutors, account) {
     var contributeInstance;
 
     App.contracts.CrowdFunding.deployed().then(function(instance) {
