@@ -1,5 +1,5 @@
-var Crowdsale = artifacts.require("Crowdsale");
+var CrowdFunding = artifacts.require("CrowdFunding");
 
 module.exports = function(deployer) {
-  deployer.deploy(Crowdsale);
+  deployer.deploy(CrowdFunding);
 };

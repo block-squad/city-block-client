@@ -10,6 +10,9 @@
 import MainNav from './components/MainNav'
 import Bottom from './components/Bottom'
 
+const url = 'http://localhost:3000'
+
+
 export default {
   name: 'app',
   // computed: {

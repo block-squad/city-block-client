@@ -12,16 +12,22 @@ Vue.use(Buefy)
 
 Vue.config.productionTip = false
 
+const url = 'https://fast-reef-25356.herokuapp.com'
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
   router,
   template: '<App/>',
   components: { App },
+  web3Provider: null,
+  contracts: {},
   mounted: function() {
-    this.method1()
-    this.method2()
+    this.init()
+    this.initWeb3()
+    this.initContract()
+    this.markCool()
   },
+
   methods: {
     method1: function() {
       if (typeof web3 !== 'undefined') {
