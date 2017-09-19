@@ -2,7 +2,7 @@
   <div class="feed">
     <div class="container">
       <div class="columns is-desktop is-multiline">
-        <project v-for="project in projects" :project="project" key=""></project>
+        <project :contribute="contribute" v-for="project in projects" :project="project" key=""></project>
       </div>
     </div>
   </div>
@@ -13,6 +13,7 @@ import Project from './Project'
 
 export default {
   name: 'feed',
+  props: ['contribute']
   components: {
     Project
   },

@@ -1,7 +1,7 @@
 <template>
   <div class="home">
     <section class="section">
-      <feed :projects="projects"></feed>
+      <feed :contribute="contribute" :projects="projects"></feed>
     </section>
   </div>
 </template>

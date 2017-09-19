@@ -22,10 +22,7 @@ new Vue({
   web3Provider: null,
   contracts: {},
   mounted: function() {
-    this.init()
-    this.initWeb3()
-    this.initContract()
-    this.markCool()
+    this.method1()
   },
 
   methods: {

@@ -33,7 +33,7 @@
           </div>
         </div>
         <footer class="card-footer">
-          <a href="#" class="card-footer-item">Contribute</a>
+          <a href="#" v-on:click="contribute" class="card-footer-item">Contribute</a>
         </footer>
       </div>
     </div>
@@ -44,7 +44,7 @@
 
 export default {
   name: 'project',
-  props: ['project'],
+  props: ['project', 'contribute'],
   computed: {
     daysLeft() {
       let deadline = new Date(`
