@@ -1,5 +1,5 @@
 <template>
-  <section class="signUp">
+  <section class="signUp section">
     <div class="container">
       <div class="field">
         <label class="label">Name</label>
