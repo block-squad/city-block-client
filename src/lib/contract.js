@@ -58,7 +58,19 @@ const contract = {
         "payable": false,
         "type": "function"
       }
-    ]'
+    ]',
+
+  createProject: function() {
+    let funder = web3.eth.accounts[0]
+    let amount =
+    }
+    struct Campaign {
+        address beneficiary;
+        uint fundingGoal;
+        uint numFunders;
+        uint amount;
+        uint deadline;
+  }
 }
 
 export default contract

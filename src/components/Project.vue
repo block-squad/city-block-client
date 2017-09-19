@@ -1,5 +1,5 @@
 <template>
-  <div class="column is-one-quarter-desktop">
+  <div class="column is-half-mobile is-one-quarter-desktop">
     <div class="project">
       <div class="card">
         <div class="card-image">

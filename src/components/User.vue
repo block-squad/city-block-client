@@ -3,7 +3,7 @@
     <div class="user container">
       <div class="columns is-desktop">
         <div class="column is-one-quarter-desktop">
-          <sidebar></sidebar>
+          <!-- <sidebar></sidebar> -->
         </div>
         <div class="column is-three-quarters-desktop">
           <feed :projects="projects"></feed>
@@ -14,14 +14,14 @@
 </template>
 
 <script>
-import Sidebar from './Sidebar'
+// import Sidebar from './Sidebar'
 import Feed from './Feed'
 
 const url = "https://city-block-server.herokuapp.com"
 
 export default {
   components: {
-    Sidebar,
+    // Sidebar,
     Feed
   },
   data() {

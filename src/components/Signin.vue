@@ -1,6 +1,6 @@
 <template>
   <section class="signin section">
-    <form v-on:submit.prevent="signIn">
+    <form v-on:submit.prevent="signIn" class="column is-one-third-desktop">
       <div class="container">
         <div class="field">
           <label class="label">Username</label>
@@ -29,10 +29,10 @@
 
 <script>
 const url = "https://city-block-server.herokuapp.com"
+// const url = "http://localhost:3000"
 
 export default {
   name: 'signin',
-  // props: ['username', 'password'],
   data() {
     return {
       signInForm: {
@@ -43,32 +43,27 @@ export default {
   },
   methods: {
     signIn(event) {
-      const data = {
-        username: this.signInForm.username,
-        password: this.signInForm.password
-      }
       const settings = {
         method: 'POST',
-        // headers: {
-        //   'content-type': 'application/json'
-        // },
-        body: data
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          username: this.signInForm.username,
+          password: this.signInForm.password
+        })
       };
-      console.log(`${url}/auth/signin`);
-      console.log(settings);
       fetch(`${url}/auth/signin`, settings)
       .then(response => response.json())
       .then(response => {
-       console.log(response);
        if (response.token) {
          localStorage.setItem('token', response.token)
          localStorage.setItem('userId', JSON.stringify(response.user.id))
          location.href = '/user'
-         console.log(response.token);
        }
       })
     }
-
   }
 }
 

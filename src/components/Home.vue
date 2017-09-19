@@ -24,6 +24,11 @@ export default {
     const data = await fetch(`${url}/projects`)
     const response = await data.json()
     this.projects = response
+  },
+  methods: {
+    contribute() {
+      
+    }
   }
 }
 </script>
