@@ -16,6 +16,7 @@
           <router-link to='/about' class="navbar-item">About</router-link>
           <router-link to='/signup' class="navbar-item">Sign Up</router-link>
           <router-link to='/signin' class="navbar-item">Sign In</router-link>
+          <router-link to='/newproject' class="navbar-item">New Project</router-link>
           <!-- <div class="navbar-item">
             <a class="button is-primary">Logout</a>
           </div> -->
@@ -26,7 +27,6 @@
 </template>
 
 <script>
-
 export default {
   name: 'mainNav'
 }
