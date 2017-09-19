@@ -1,5 +1,7 @@
 import CrowdFunding from '../../build/contracts/CrowdFunding.json'
 
+var numOfCampaigns = 0;
+
 App = {
   web3Provider: null,
   contracts: {},
@@ -31,7 +33,7 @@ App = {
     App.contracts.CrowdFunding.setProvider(App.web3Provider);
 
     // Use our contract to retieve and mark the adopted pets.
-    App.markFinished();
+    App.checkGoalReached();
 
     return App.bindEvents();
   },
@@ -68,29 +70,20 @@ App = {
     });
   },
 
-  markContribute: function(contriutors, account){
+  contribute: function(contriutors, account){
+
+  },
+
+  createNewCampain: function(address, goal, deadline) {
+
+    let newCampaignId;
+    newCampaignId = numOfCampaigns++
+
+    return newCampaignId
+  },
+  checkGoalReached: function(contriutors, account) {
 
   }
-
-  markFinished: function(contriutors, account) {
-    var contributeInstance;
-
-    App.contracts.CrowdFunding.deployed().then(function(instance) {
-      contributeInstance = instance;
-
-      return contributeInstance.getContributors.call();
-    }).then(function(contributors) {
-      for (i = 0; i < contributors.length; i++) {
-        if (contributors[i] !== '0x0000000000000000000000000000000000000000') {
-          // $('.panel-pet').eq(i).find('button').text('Pending...').attr('disabled', true);
-          // TODO: append pending... to project card in view
-        }
-      }
-    }).catch(function(err) {
-      console.log(err.message);
-    });
-  }
-
 };
 
 // $(function() {
