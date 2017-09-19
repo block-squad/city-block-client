@@ -1,6 +1,5 @@
 <template>
-  <div class="about">
-    <MainNav></MainNav>
+  <section class="about section">
     <div class="container">
       <div class="columns">
         <div class="column">
@@ -13,19 +12,12 @@
         </div>
       </div>
     </div>
-    <Bottom></Bottom>
-  </div>
+  </section>
 </template>
 
 <script>
-import MainNav from './MainNav'
-import Bottom from './Bottom'
 
 export default {
-  name: 'about',
-  components: {
-    MainNav,
-    Bottom
-  }
+  name: 'about'
 }
 </script>

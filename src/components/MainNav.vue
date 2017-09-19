@@ -15,7 +15,7 @@
         <div class="navbar-end">
           <router-link to='/about' class="navbar-item">About</router-link>
           <router-link to='/signup' class="navbar-item">Sign Up</router-link>
-          <a class="navbar-item">Sign In</a>
+          <router-link to='/signin' class="navbar-item">Sign In</router-link>
           <!-- <div class="navbar-item">
             <a class="button is-primary">Logout</a>
           </div> -->
@@ -26,14 +26,8 @@
 </template>
 
 <script>
+
 export default {
   name: 'mainNav'
 }
 </script>
-
-<style scoped>
-  .navbar-brand.navbar-item a img {
-    height: 200px;
-  }
-
-</style>
