@@ -1,5 +1,5 @@
 <template>
-  <div class="feed">
+  <div class="feed section">
     <div class="container">
       <div class="columns is-desktop is-multiline">
         <project v-for="project in projects" :project="project" key=""></project>

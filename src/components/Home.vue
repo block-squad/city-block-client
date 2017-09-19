@@ -1,6 +1,7 @@
 <template>
   <div class="home">
-    <section class="section">
+    <section class="">
+      <sidebar></sidebar>
       <feed :projects="projects"></feed>
     </section>
   </div>
@@ -8,12 +9,14 @@
 
 <script>
 import Feed from './Feed'
+import Sidebar from './Sidebar'
 
 const url = "https://city-block-server.herokuapp.com"
 
 export default {
   components: {
-    Feed
+    Feed,
+    Sidebar
   },
   data() {
     return {
