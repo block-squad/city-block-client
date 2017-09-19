@@ -29,6 +29,7 @@
 
 <script>
 const url = "https://city-block-server.herokuapp.com"
+// const url = "http://localhost:3000"
 
 export default {
   name: 'signin',
@@ -43,16 +44,16 @@ export default {
   },
   methods: {
     signIn(event) {
-      const data = {
-        username: this.signInForm.username,
-        password: this.signInForm.password
-      }
       const settings = {
         method: 'POST',
-        // headers: {
-        //   'content-type': 'application/json'
-        // },
-        body: data
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          username: this.signInForm.username,
+          password: this.signInForm.password
+        })
       };
       console.log(`${url}/auth/signin`);
       console.log(settings);
