@@ -14,13 +14,8 @@ contract CrowdFunding {
         mapping (uint => Funder) funders;
     }
 
-    address[16] public contributors;
     uint numCampaigns;
     mapping (uint => Campaign) campaigns;
-
-    function getContributors() public returns (address[16]) {
-      return contributors;
-    }
 
     function newCampaign(address beneficiary, uint goal, uint deadline) returns (uint campaignID) {
         campaignID = numCampaigns++;
