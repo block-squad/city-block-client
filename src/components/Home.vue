@@ -1,8 +1,7 @@
 <template>
   <div class="home">
-    <section class="section">
-      <feed :contribute="contribute" :projects="projects"></feed>
-    </section>
+      <hero></hero>
+      <feed :projects="projects" :contribute="contribute"></feed>
   </div>
 </template>
 
@@ -27,7 +26,7 @@ export default {
   },
   methods: {
     contribute() {
-      
+
     }
   }
 }

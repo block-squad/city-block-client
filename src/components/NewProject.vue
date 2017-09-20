@@ -60,7 +60,7 @@ export default {
   },
   methods: {
     createProject(event) {
-      
+      contractInstance.createProject(campaignID, {from:web3.eth.accounts[0]})
       // let amount =
 
     //   struct Campaign {
