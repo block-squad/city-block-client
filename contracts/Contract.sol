@@ -16,8 +16,6 @@ contract CrowdFunding {
     uint numCampaigns;
     mapping (uint => Campaign) campaigns;
     function newCampaign(address beneficiary, uint goal, uint deadline) returns (uint campaignID) {
-        campaignID = numCampaigns++; // campaignID is return variable
-        Campaign c = campaigns[campaignID]; // assigns reference
         campaignID = numCampaigns++;
         Campaign c = campaigns[campaignID];
         c.beneficiary = beneficiary;

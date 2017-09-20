@@ -42,7 +42,7 @@
 
 <script>
 
-import web3 from 'web3'
+import Web3 from 'web3'
 
 export default {
   name: 'newproject',
@@ -55,12 +55,18 @@ export default {
         beneficiary: '',
         date: '',
         target: ''
-      }
+      },
+      web3: new Web3(new Web3.providers.HttpProvider('http://localhost:8545'))
     }
   },
   methods: {
     createProject(event) {
-      contractInstance.createProject(campaignID, {from:web3.eth.accounts[0]})
+      let code = fs.readFileSync('Contract.sol').toString()
+      console.log(code);
+      // let account = web3.eth.getAccounts()
+      // console.log(account)
+
+      // contractInstance.createProject(campaignID, {from:web3.eth.accounts[0]})
       // let amount =
 
     //   struct Campaign {
