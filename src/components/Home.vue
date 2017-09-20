@@ -1,12 +1,14 @@
 <template>
   <div class="home">
+    <brand v-if="!isSignedIn"></brand>
     <hero v-if="isSignedIn"></hero>
-    <feed :projects="projects"></feed>
+    <feed :projects="projects" :isSignedIn="isSignedIn"></feed>
   </div>
 </template>
 
 <script>
 import Feed from './Feed'
+import Brand from './Brand'
 import Hero from './Hero'
 
 const url = "https://city-block-server.herokuapp.com"
@@ -14,6 +16,7 @@ const url = "https://city-block-server.herokuapp.com"
 export default {
   components: {
     Feed,
+    Brand,
     Hero
   },
   computed: {

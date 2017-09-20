@@ -4,8 +4,7 @@
       <div class="container">
         <div class="navbar-brand">
           <router-link to="/" class="navbar-item" >
-            <h1 class="title">City Block</h1>
-            <!-- <img src="../assets/CB-logo.png" alt="cityBlock" > -->
+            <img src="../assets/logo.jpg" alt="City Block" height="100" width="150">
           </router-link>
           <button class="button navbar-burger" v-on:click.prevent="toggleBurger" v-bind:class="{'is-active': isMobile}">
             <span></span>
