@@ -4,7 +4,7 @@
       <div class="card">
         <div class="card-image">
           <figure class="image is-4by3">
-            <img src="http://bulma.io/images/placeholders/1280x960.png" alt="Placeholder image">
+            <img v-bind:src="image(project.type)">
           </figure>
         </div>
         <div class="card-content">
@@ -53,6 +53,15 @@ export default {
         ${new Date(this.project.date).getFullYear()}
         `)
       return `${deadline.getMonth()}/${deadline.getDate()}/${deadline.getFullYear()}`
+    }
+  },
+  methods: {
+    image(type) {
+      if (type == 'street/roads') {
+        return '../assets/street.jpg'
+      } else {
+        return 'http://bulma.io/images/placeholders/1280x960.png'
+      }
     }
   }
 }
