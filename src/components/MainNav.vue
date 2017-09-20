@@ -16,11 +16,11 @@
         <div class="navbar-menu" v-bind:class="{'is-active': isMobile}">
           <div class="navbar-end">
             <router-link to='/about' class="navbar-item">About</router-link>
-            <router-link to='/signup' class="navbar-item">Sign Up</router-link>
-            <router-link to='/signin' class="navbar-item">Sign In</router-link>
-            <router-link to='/newproject' class="navbar-item">New Project</router-link>
-            <div class="navbar-item">
-              <a class="button is-primary">Logout</a>
+            <router-link v-if="!isSignedIn"  to='/signup' class="navbar-item">Sign Up</router-link>
+            <router-link v-if="!isSignedIn"  to='/signin' class="navbar-item">Sign In</router-link>
+            <router-link v-if="isSignedIn" to='/newproject' class="navbar-item">New Project</router-link>
+            <div v-if="isSignedIn" class="navbar-item">
+              <a v-on:click="logout" class="button is-primary">Logout</a>
             </div>
           </div>
         </div>
@@ -32,6 +32,7 @@
 <script>
 export default {
   name: 'mainNav',
+  props: ['isSignedIn'],
   data() {
     return {
       isMobile: false
@@ -40,6 +41,12 @@ export default {
   methods: {
     toggleBurger(event) {
       this.isMobile = !this.isMobile
+    },
+    logout(event) {
+      localStorage.removeItem('token')
+      localStorage.removeItem('userId')
+      location.href = '/'
+      this.isSignedIn = false
     }
   }
 }

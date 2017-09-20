@@ -1,7 +1,7 @@
 <template>
   <div class="home">
-      <hero></hero>
-      <feed :projects="projects"></feed>
+    <hero v-if="isSignedIn"></hero>
+    <feed :projects="projects"></feed>
   </div>
 </template>
 
@@ -15,6 +15,16 @@ export default {
   components: {
     Feed,
     Hero
+  },
+  computed: {
+    isSignedIn() {
+      let token = localStorage.getItem('token')
+      if (token) {
+        return true
+      } else {
+        return false
+      }
+    }
   },
   data() {
     return {
