@@ -58,10 +58,44 @@
 
 <script>
 export default {
-  methods: {
-    signUp() {
-      //this is where the auth code would go
+  data() {
+    return {
+      signUpForm: {
+        username: '',
+        password: '',
+        eth_wallet_key: ''
+      }
     }
+  },
+  methods: {
+    signUp(event) {
+      const settings = {
+        method: 'POST',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          username: this.signUpForm.username,
+          password: this.signUpForm.password,
+          eth_wallet_key: this.signUpForm.eth_wallet_key
+        })
+      };
+      console.log(`${url}/auth/signin`);
+      console.log(settings);
+      fetch(`${url}/auth/signin`, settings)
+      .then(response => response.json())
+      .then(response => {
+       console.log(response);
+       if (response.token) {
+         localStorage.setItem('token', response.token)
+         localStorage.setItem('userId', JSON.stringify(response.user.id))
+         location.href = '/user'
+         console.log(response.token);
+       }
+      })
+    }
+
   }
 }
 </script>
