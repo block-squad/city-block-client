@@ -2,7 +2,7 @@
   <div id="app">
     <mainNav></mainNav>
     <router-view></router-view>
-    <bottom :web3Provider="web3Provider"></bottom>
+    <bottom :web3Provider="web3Provider" :web3="web3"></bottom>
   </div>
 </template>
 

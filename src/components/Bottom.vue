@@ -26,7 +26,7 @@ import CrowdFunding from '../../build/contracts/CrowdFunding.json'
 
 export default {
   name: 'bottom',
-  props: ['web3Provider'],
+  props: ['web3Provider', 'web3'],
   methods: {
     method1(event){
       event.preventDefault();
@@ -34,13 +34,21 @@ export default {
       console.log(provider);
       console.log(contract);
       console.log(CrowdFunding);
-      let account_one = "0x1341bce9c74eb9fb72d1dc5a3cb221dd91334fdf"
-      let account_two = "0xdb09cf6d27ef22742e432e6585fb2b181e11a308"
-      let contract_address = "0x2773eb27e2da8a35a31714a4c99737c559ea65f2"
+      let contract_address = "0x7091d60e8c51c5fcdd424badcde99ec6d9fbb3a5"
+      let deployedInstance;
       let MyContract = contract(CrowdFunding);
+      console.log(MyContract);
+
+      console.log(this.web3.eth.accounts);
       MyContract.setProvider(provider)
       MyContract.deployed().then(instance => {
         console.log(instance);
+        deployedInstance = instance
+        return deployedInstance.getContributors()
+      }).then(result => {
+        console.log(result);
+      }).catch(err => {
+        console.log(err);
       })
 
     }
