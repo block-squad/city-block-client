@@ -1,47 +1,23 @@
 <template>
   <section class="signUp section">
     <div class="container">
-      <div class="field">
-        <label class="label">Name</label>
-        <div class="control">
-          <input class="input" type="text" placeholder="Text input">
-        </div>
-      </div>
-      <div class="field">
+      <form v-on:submit="signUp">
+        <div class="field">
         <label class="label">Username</label>
-        <div class="control has-icons-left has-icons-right">
-          <input class="input is-success" type="text" placeholder="Text input" value="bulma">
-          <span class="icon is-small is-left">
-            <i class="fa fa-user"></i>
-          </span>
-          <span class="icon is-small is-right">
-            <i class="fa fa-check"></i>
-          </span>
+        <div class="control">
+          <input v-model="signUpForm.username" class="input" type="text" placeholder="Username">
         </div>
-        <p class="help is-success">This username is available</p>
       </div>
       <div class="field">
         <label class="label">Password</label>
-        <div class="control has-icons-left has-icons-right">
-          <input class="input is-danger" type="password" placeholder="Password">
-          <span class="icon is-small is-left">
-            <i class="fa fa-envelope"></i>
-          </span>
-          <span class="icon is-small is-right">
-            <i class="fa fa-warning"></i>
-          </span>
+        <div class="control">
+          <input v-model="signUpForm.password" class="input" type="password" placeholder="Password">
         </div>
       </div>
       <div class="field">
         <label class="label">Wallet Address</label>
-        <div class="control has-icons-left has-icons-right">
-          <input class="input is-danger" type="password" placeholder="Password">
-          <span class="icon is-small is-left">
-            <i class="fa fa-envelope"></i>
-          </span>
-          <span class="icon is-small is-right">
-            <i class="fa fa-warning"></i>
-          </span>
+        <div class="control">
+          <input v-model="signUpForm.eth_wallet_key" class="input" type="text" placeholder="0x0000000000">
         </div>
       </div>
       <div class="field is-grouped">
@@ -52,11 +28,14 @@
           <button class="button is-link">Cancel</button>
         </div>
       </div>
+      </form>
     </div>
   </section>
 </template>
 
 <script>
+const url = "https://city-block-server.herokuapp.com"
+
 export default {
   data() {
     return {
@@ -81,17 +60,14 @@ export default {
           eth_wallet_key: this.signUpForm.eth_wallet_key
         })
       };
-      console.log(`${url}/auth/signin`);
-      console.log(settings);
-      fetch(`${url}/auth/signin`, settings)
+      fetch(`${url}/auth/signup`, settings)
       .then(response => response.json())
       .then(response => {
        console.log(response);
        if (response.token) {
          localStorage.setItem('token', response.token)
          localStorage.setItem('userId', JSON.stringify(response.user.id))
-         location.href = '/user'
-         console.log(response.token);
+         location.href = '/'
        }
       })
     }
