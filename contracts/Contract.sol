@@ -1,4 +1,4 @@
-pragma solidity ^0.4.2;
+pragma solidity ^0.4.4;
 
 contract CrowdFunding {
     struct Funder {
@@ -13,8 +13,15 @@ contract CrowdFunding {
         uint deadline;
         mapping (uint => Funder) funders;
     }
+
+    address[16] public contributors;
     uint numCampaigns;
     mapping (uint => Campaign) campaigns;
+
+    function getContributors() public returns (address[16]) {
+      return contributors;
+    }
+
     function newCampaign(address beneficiary, uint goal, uint deadline) returns (uint campaignID) {
         campaignID = numCampaigns++;
         Campaign c = campaigns[campaignID];
@@ -22,12 +29,13 @@ contract CrowdFunding {
         c.fundingGoal = goal;
         c.deadline = block.number + deadline;
     }
-    function contribute(uint campaignID) {
+    function contribute(uint campaignID) public returns (uint) {
         Campaign c = campaigns[campaignID];
         Funder f = c.funders[c.numFunders++];
         f.addr = msg.sender;
         f.amount = msg.value;
         c.amount += f.amount;
+        return campaignID;
     }
     function checkGoalReached(uint campaignID) returns (bool reached) {
         Campaign c = campaigns[campaignID];

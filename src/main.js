@@ -7,7 +7,7 @@ import Buefy from 'buefy'
 import 'buefy/lib/buefy.css'
 
 import Web3 from 'web3'
-
+import ContributeContract from './lib/contract.js'
 Vue.use(Buefy)
 
 Vue.config.productionTip = false
@@ -61,6 +61,6 @@ new Vue({
             etherscanLinkA.innerHTML='etherscan.io'
         }
     });
-}
+  }
 }
 })
