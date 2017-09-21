@@ -4,7 +4,7 @@
       <div class="container">
         <div class="navbar-brand">
           <router-link to="/" class="navbar-item" >
-            <img src="../assets/logo.jpg" alt="City Block" height="100" width="150">
+            <h1 class="logo">cityBLOCK</h1>
           </router-link>
           <button class="button navbar-burger" v-on:click.prevent="toggleBurger" v-bind:class="{'is-active': isMobile}">
             <span></span>
@@ -50,3 +50,11 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+.logo {
+  font-family: 'Megrim', cursive;
+  font-size: 3em;
+}
+
+</style>

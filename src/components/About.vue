@@ -3,7 +3,7 @@
     <div class="hero-body">
     </div>
     <div class="howto box container">
-      <h1 class="title"><strong>How To Use cityBlock: </strong></h1>
+      <h1 class="title"><strong>How To Use cityBlock </strong></h1>
       <ul>
         <li> If you don’t already have one, you will need an <a href="https://ethereum.org">Ethereum Wallet</a> fully loaded with <a href="https://ethereum.org/ether">Ether</a>  to interact with this application. </li>
         <br>
@@ -45,9 +45,16 @@ export default {
     width: 50vw;
     margin-left: auto;
     margin-right: auto;
-    margin-top: 3vh;
-    margin-bottom: 3vh;
-    padding: 50px;
+    margin-top: 5vh;
+    margin-bottom: 5vh;
+    padding: 70px;
+    border-radius: 10px;
+    background-color: rgb(244, 244, 244);
+  }
+
+  .title {
+    font-family: 'Megrim', cursive;
+    font-size: 3em;
   }
   li {
     list-style-type: disc;

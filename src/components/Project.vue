@@ -23,7 +23,7 @@
             <br>
             <div class="">
               <div class="">
-                <span class="tag is-dark">Date Started</span>
+                <span class="tag is-dark">Deadline</span>
                 {{daysLeft}}
               </div>
               <div class="">
@@ -38,8 +38,10 @@
           </div>
         </div>
         <footer v-if="isSignedIn" class="card-footer">
-          <b-field label="amount to contribute">
-            <input v-model="amount" class="input" type="number" placeholder="0.0"></input>
+          <b-field class="card-footer-item">
+            <span class="amount">Amount: </span>
+            <br>
+            <input v-model="amount" class="input" type="number" placeholder="Amount" value=""></input>
           </b-field>
           <a v-on:click="method1" class="card-footer-item" v-bind:id="project.id">Contribute</a>
         </footer>
@@ -122,7 +124,7 @@ export default {
         MyContract.deployed().then(function(instance){
           console.log(instance);
           deployedInstance = instance;
-          return deployedInstance.contribute(1)
+          return deployedInstance.contribute(event.target.id)
         }).then(function(result){
           console.log("success");
           console.log(result);
@@ -155,5 +157,9 @@ export default {
   .card-content {
     height: 40vh;
     overflow: scroll;
+  }
+
+  .amount {
+    padding-right: .5em;
   }
 </style>
