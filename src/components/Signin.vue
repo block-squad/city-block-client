@@ -62,7 +62,7 @@ export default {
        if (response.token) {
          localStorage.setItem('token', response.token)
          localStorage.setItem('userId', JSON.stringify(response.user.id))
-         location.href = '/user'
+         location.href = '/'
        }
       })
     }

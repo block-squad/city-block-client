@@ -1,11 +1,11 @@
 <template>
   <section class="newproject section container">
-    <form v-on:submit.prevent="createProject">
+    <form v-on:submit.prevent="newProject">
       <b-field label="Project Name">
-        <b-input type="text" v-model="newProjectForm.name"></b-input>
+        <input v-model="newProjectForm.name" class="input" type="text"></input>
       </b-field>
       <b-field label="Type">
-        <b-select placeholder="Select type" v-model="newProjectForm.type">
+        <b-select v-model="newProjectForm.type" placeholder="Select type">
           <option>Parks / Rec</option>
           <option>Streets / Roads</option>
           <option>Education</option>
@@ -42,41 +42,51 @@
 
 <script>
 
-import Web3 from 'web3'
+const url = "https://city-block-server.herokuapp.com"
 
 export default {
   name: 'newproject',
-  data() {
+  data(){
     return {
       newProjectForm: {
-        name: '',
-        type: '',
-        desc: '',
-        beneficiary: '',
-        date: '',
-        target: ''
-      },
-      web3: new Web3(new Web3.providers.HttpProvider('http://localhost:8545'))
+        name: "",
+        type: "",
+        desc: "",
+        target: 0,
+      }
     }
   },
   methods: {
-    createProject(event) {
-      let code = fs.readFileSync('Contract.sol').toString()
-      console.log(code);
-      // let account = web3.eth.getAccounts()
-      // console.log(account)
+    newProject(event){
+      let currUser = localStorage.getItem('userId');
+      if (currUser) {
+        const settings = {
+          method: 'POST',
+          headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            name: this.newProjectForm.name,
+            type: this.newProjectForm.type,
+            desc: this.newProjectForm.desc,
+            money: 0,
+            target: this.newProjectForm.target,
+            date: new Date(),
+            owner_id: parseInt(currUser),
+            official_id: 5
+          })
 
-      // contractInstance.createProject(campaignID, {from:web3.eth.accounts[0]})
-      // let amount =
+        };
 
-    //   struct Campaign {
-    //       address beneficiary;
-    //       uint fundingGoal;
-    //       uint numFunders;
-    //       uint amount;
-    //       uint deadline;
-    // }
-  }
+        fetch(`${url}/projects`, settings)
+          .then(data => data.json())
+          .then(data => {
+            location.href = '/'
+          })
+      }
+
+    }
   }
 }
 </script>

@@ -1,7 +1,7 @@
 <template>
   <div class="home">
-      <hero></hero>
-      <feed :projects="projects" :contribute="contribute"></feed>
+    <hero v-if="isSignedIn"></hero>
+    <feed :projects="projects"></feed>
   </div>
 </template>
 
@@ -13,6 +13,16 @@ const url = "https://city-block-server.herokuapp.com"
 export default {
   components: {
     Feed
+  },
+  computed: {
+    isSignedIn() {
+      let token = localStorage.getItem('token')
+      if (token) {
+        return true
+      } else {
+        return false
+      }
+    }
   },
   data() {
     return {
