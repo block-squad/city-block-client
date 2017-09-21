@@ -17,12 +17,12 @@ contract CrowdFunding {
     mapping (uint => Campaign) campaigns;
     function newCampaign(address beneficiary, uint goal, uint deadline) returns (uint campaignID) {
         campaignID = numCampaigns++;
-        Campaign c = campaigns[campaignID]; 
+        Campaign c = campaigns[campaignID];
         c.beneficiary = beneficiary;
         c.fundingGoal = goal;
         c.deadline = block.number + deadline;
     }
-    function contribute(uint campaignID) {
+    function contribute(uint campaignID, uint amount) payable {
         Campaign c = campaigns[campaignID];
         Funder f = c.funders[c.numFunders++];
         f.addr = msg.sender;

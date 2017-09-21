@@ -85,6 +85,7 @@ export default {
       this.method1(event)
     },
     method1(event){
+      let target = this.newProjectForm.target
       if (typeof this.web3 !== 'undefined') {
         this.web3Provider = web3.currentProvider;
         this.web3 = new Web3(web3.currentProvider)
@@ -105,7 +106,7 @@ export default {
       MyContract.new().then(function(instance){
         console.log(instance);
         deployedInstance = instance;
-        return deployedInstance.newCampaign(account, .0005, new Date())
+        return deployedInstance.newCampaign(account, target, new Date())
       }).then(function(result){
         console.log("success");
         console.log(result);

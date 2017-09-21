@@ -119,15 +119,23 @@ export default {
         MyContract.setProvider(provider)
         MyContract.defaults({
           from: account,
+          value: amountContribute
         })
 
         MyContract.deployed().then(function(instance){
-          console.log(instance);
           deployedInstance = instance;
-          return deployedInstance.contribute(event.target.id)
+          return deployedInstance.contribute(event.target.id, amountContribute)
         }).then(function(result){
-          console.log("success");
+          result.send(web3.toWei(1, "ether")).then(function(result) {
+            console.log("this is it");
+          });
+          console.log("did it work");
           console.log(result);
+          return deployedInstance.checkGoalReached(event.target.id)
+        }).then(function(result) {
+          console.log('success');
+          console.log(result);
+        })
           const currUser = localStorage.getItem('userId')
           const settings = {
             method: 'POST',
@@ -136,7 +144,7 @@ export default {
               'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-              amount: amountContributed,
+              amount: amountContribute,
               project_id: event.target.id,
               account_id: currUser
             })
@@ -144,12 +152,12 @@ export default {
           fetch(`${url}/contributions`, settings)
           .then(data => data.json())
           .then(data => {
-            location.href = '/'
+            // location.href = '/'
           })
-        })
+        }
       }
     }
-  }
+
 
 </script>
 
