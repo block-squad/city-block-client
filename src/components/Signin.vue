@@ -1,30 +1,31 @@
 <template>
   <section class="signin section">
     <div class="container">
-      <form v-on:submit.prevent="signIn">
-        <div class="container">
-          <div class="field">
-            <label class="label">Username</label>
-            <div class="control has-icons-left has-icons-right">
-              <input v-model="signInForm.username" class="input" type="text" placeholder="Username">
+      <div class="box">
+        <form v-on:submit.prevent="signIn">
+          <h1 class="title">Sign In</h1>
+            <div class="field">
+              <label class="label">Username</label>
+              <div class="control">
+                <input v-model="signInForm.username" class="input" type="text" placeholder="Username">
+              </div>
             </div>
-          </div>
-          <div class="field">
-            <label class="label">Password</label>
-            <div class="control has-icons-left has-icons-right">
-              <input v-model="signInForm.password" class="input" type="password" placeholder="Password">
+            <div class="field">
+              <label class="label">Password</label>
+              <div class="control">
+                <input v-model="signInForm.password" class="input" type="password" placeholder="Password">
+              </div>
             </div>
-          </div>
-          <div class="field is-grouped">
-            <div class="control">
-              <button class="button is-primary">Submit</button>
+            <div class="field is-grouped">
+              <div class="control">
+                <button class="button is-dark">Submit</button>
+              </div>
+              <div class="control">
+                <button class="button is-link">Cancel</button>
+              </div>
             </div>
-            <div class="control">
-              <button class="button is-link">Cancel</button>
-            </div>
-          </div>
-        </div>
-      </form>
+        </form>
+      </div>
     </div>
   </section>
 </template>
@@ -75,4 +76,11 @@ export default {
   .modal-card {
     width: auto;
   }
+
+  .box {
+    width: 50vw;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
 </style>
