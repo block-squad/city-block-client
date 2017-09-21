@@ -34,7 +34,7 @@
           </div>
         </div>
         <footer v-if="isSignedIn" class="card-footer">
-          <a href="#" class="card-footer-item">Contribute</a>
+          <a href="#" v-on:click="method1" class="card-footer-item">Contribute</a>
         </footer>
       </div>
     </div>
@@ -48,6 +48,10 @@ import park from '../assets/park.jpg'
 import culture from '../assets/culture.jpg'
 import building from '../assets/building.jpg'
 import education from '../assets/education.jpg'
+import contract from "truffle-contract"
+import CrowdFunding from '../../build/contracts/CrowdFunding.json'
+import Web3 from 'web3'
+
 
 export default {
   name: 'project',
@@ -79,9 +83,39 @@ export default {
       } else {
         return 'http://bulma.io/images/placeholders/1280x960.png'
       }
+    },
+      method1(event){
+        if (typeof this.web3 !== 'undefined') {
+          this.web3Provider = web3.currentProvider;
+          this.web3 = new Web3(web3.currentProvider)
+        } else {
+          console.log('Injected web3 Not Found!!!')
+          this.web3Provider = new Web3(new Web3.providers.HttpProvider('http://localhost:8545'));
+          this.web3 = new Web3(this.web3Provider)
+        }
+
+        event.preventDefault();
+        let provider = this.web3Provider;
+        let deployedInstance;
+        let MyContract = contract(CrowdFunding);
+        let account = web3.eth.defaultAccount
+        MyContract.setProvider(provider)
+        MyContract.defaults({
+          from: account,
+        })
+
+        MyContract.deployed().then(function(instance){
+          console.log(instance);
+          deployedInstance = instance;
+          return deployedInstance.contribute(1)
+        }).then(function(result){
+          console.log("success");
+          console.log(result);
+        })
+      }
     }
   }
-}
+
 </script>
 
 <style scoped>
