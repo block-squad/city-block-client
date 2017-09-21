@@ -8,18 +8,18 @@
         </b-field>
         <b-field label="Type">
           <b-select v-model="newProjectForm.type" placeholder="Select type">
-            <option>Parks / Rec</option>
-            <option>Streets / Roads</option>
-            <option>Education</option>
-            <option>Building</option>
-            <option>Culture</option>
-            <option>Environment</option>
+            <option value="parks and rec.">Parks / Rec</option>
+            <option value="street/roads">Streets / Roads</option>
+            <option value="education">Education</option>
+            <option value="building">Building</option>
+            <option value="culture">Culture</option>
+            <option value="environment">Environment</option>
           </b-select>
         </b-field>
         <b-field label="Description">
           <b-input v-model="newProjectForm.desc" type="textarea"></b-input>
         </b-field>
-        <b-field label="Target Amount">
+        <b-field label="Target Amount (in Ether)">
           <b-input v-model="newProjectForm.target" type="number" placeholder="0.00"></b-input>
         </b-field>
         <div class="field is-grouped">
@@ -38,9 +38,10 @@
 </template>
 
 <script>
-
+import contract from "truffle-contract"
+import CrowdFunding from '../../build/contracts/CrowdFunding.json'
+import Web3 from 'web3'
 const url = "https://city-block-server.herokuapp.com"
-
 export default {
   name: 'newproject',
   data(){
@@ -73,16 +74,41 @@ export default {
             owner_id: parseInt(currUser),
             official_id: 5
           })
-
         };
-
         fetch(`${url}/projects`, settings)
           .then(data => data.json())
           .then(data => {
             location.href = '/'
           })
       }
-
+      this.method1(event)
+    },
+    method1(event){
+      if (typeof this.web3 !== 'undefined') {
+        this.web3Provider = web3.currentProvider;
+        this.web3 = new Web3(web3.currentProvider)
+      } else {
+        console.log('Injected web3 Not Found!!!')
+        this.web3Provider = new Web3(new Web3.providers.HttpProvider('http://localhost:8545'));
+        this.web3 = new Web3(this.web3Provider)
+      }
+      event.preventDefault();
+      let provider = this.web3Provider;
+      let deployedInstance;
+      let MyContract = contract(CrowdFunding);
+      let account = web3.eth.defaultAccount
+      MyContract.setProvider(provider)
+      MyContract.defaults({
+        from: account,
+      })
+      MyContract.new().then(function(instance){
+        console.log(instance);
+        deployedInstance = instance;
+        return deployedInstance.newCampaign(account, .0005, new Date())
+      }).then(function(result){
+        console.log("success");
+        console.log(result);
+      })
     }
   }
 }
