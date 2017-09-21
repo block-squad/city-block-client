@@ -38,6 +38,9 @@
           </div>
         </div>
         <footer v-if="isSignedIn" class="card-footer">
+          <b-field label="amount to contribute">
+            <input v-model="amount" class="input" type="number" placeholder="0.0"></input>
+          </b-field>
           <a v-on:click="method1" class="card-footer-item" v-bind:id="project.id">Contribute</a>
         </footer>
       </div>
@@ -61,6 +64,11 @@ const url = "https://city-block-server.herokuapp.com"
 export default {
   name: 'project',
   props: ['project', 'isSignedIn'],
+  data(){
+    return {
+      amount: 0.0
+    }
+  },
   computed: {
     daysLeft() {
       let deadline = new Date(`
@@ -91,7 +99,7 @@ export default {
       }
     },
       method1(event){
-        console.log(event.target.id);
+        let amountContribute = this.amount
         if (typeof this.web3 !== 'undefined') {
           this.web3Provider = web3.currentProvider;
           this.web3 = new Web3(web3.currentProvider)
@@ -126,7 +134,7 @@ export default {
               'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-              amount: 1,
+              amount: amountContributed,
               project_id: event.target.id,
               account_id: currUser
             })
