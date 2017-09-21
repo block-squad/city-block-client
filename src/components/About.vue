@@ -1,6 +1,8 @@
 <template>
   <div class="about">
-    <brand></brand>
+    <div class="hero-body">
+    </div>
+    <!-- <brand></brand>
     <section class="section">
       <div class="container">
         <div class="columns">
@@ -14,7 +16,7 @@
           </div>
         </div>
       </div>
-    </section>
+    </section> -->
   </div>
 </template>
 
@@ -28,3 +30,11 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+  .hero-body {
+    background: url('../assets/cb-about.jpg') no-repeat center center fixed;
+    background-size: cover;
+    height: 90vh;
+  }
+</style>

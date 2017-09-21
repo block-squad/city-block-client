@@ -1,7 +1,6 @@
 <template>
   <section class="brand">
     <div class="hero-body">
-      <!-- <img src="../assets/hero-cb.jpg" alt=""> -->
     </div>
   </section>
 </template>
