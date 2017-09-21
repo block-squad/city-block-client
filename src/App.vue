@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <mainNav></mainNav>
+    <mainNav :isSignedIn="isSignedIn"></mainNav>
     <router-view></router-view>
     <bottom></bottom>
   </div>
@@ -9,14 +9,18 @@
 <script>
 import MainNav from './components/MainNav'
 import Bottom from './components/Bottom'
-
 export default {
   name: 'app',
-  // computed: {
-  //   isSignedIn() {
-  //     return true // refactor later based on if token exists
-  //   }
-  // },
+  computed: {
+    isSignedIn() {
+      let token = localStorage.getItem('token')
+      if (token) {
+        return true
+      } else {
+        return false
+      }
+    }
+  },
   components: {
     MainNav,
     Bottom

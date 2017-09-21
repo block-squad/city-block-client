@@ -1,7 +1,8 @@
 <template>
   <div class="feed section container">
     <div class="columns is-multiline is-mobile">
-      <project v-for="project in projects" :project="project" key=""></project>
+      <project v-for="project in projects" :project="project" key=""
+      :isSignedIn="isSignedIn"></project>
     </div>
   </div>
 </template>
@@ -14,7 +15,7 @@ export default {
   components: {
     Project
   },
-  props: ['projects']
+  props: ['projects', 'isSignedIn']
 }
 
 </script>

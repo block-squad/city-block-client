@@ -38,11 +38,9 @@
 </template>
 
 <script>
-
 import contract from "truffle-contract"
 import CrowdFunding from '../../build/contracts/CrowdFunding.json'
 import Web3 from 'web3'
-
 const url = "https://city-block-server.herokuapp.com"
 
 export default {
@@ -77,9 +75,7 @@ export default {
             owner_id: parseInt(currUser),
             official_id: 5
           })
-
         };
-
         fetch(`${url}/projects`, settings)
           .then(data => data.json())
           .then(data => {
@@ -97,7 +93,6 @@ export default {
         this.web3Provider = new Web3(new Web3.providers.HttpProvider('http://localhost:8545'));
         this.web3 = new Web3(this.web3Provider)
       }
-
       event.preventDefault();
       let provider = this.web3Provider;
       let deployedInstance;
@@ -107,7 +102,6 @@ export default {
       MyContract.defaults({
         from: account,
       })
-
       MyContract.new().then(function(instance){
         console.log(instance);
         deployedInstance = instance;

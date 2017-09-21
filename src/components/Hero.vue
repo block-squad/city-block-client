@@ -6,8 +6,9 @@
           <div>
             <p class="title">Projects</p>
             <ul>
-              <li>Project One</li>
-              <li>Project Two</li>
+              <li v-for="project in contributedProjects">
+                {{project.name}}
+              </li>
             </ul>
           </div>
         </div>
@@ -15,8 +16,9 @@
           <div>
             <p class="title">Proposals</p>
             <ul>
-              <li>Project One</li>
-              <li>Project Two</li>
+              <li v-for="proposal in proposedProjects">
+                {{proposal.name}}
+              </li>
             </ul>
           </div>
         </div>
@@ -24,7 +26,7 @@
           <div>
             <p class="title">Contributions</p>
             <br>
-            <p class="subtitle">456K</p>
+            <p class="subtitle">{{amountContributed}} Ether</p>
           </div>
         </div>
       </div>
@@ -33,7 +35,48 @@
 </template>
 
 <script>
+
+const url = "https://city-block-server.herokuapp.com"
+
 export default {
-  name: 'hero'
+  name: 'hero',
+  computed: {
+    getUserId: function(){
+      let id = localStorage.getItem('userId');
+      if (id) {
+        this.currUser = parseInt(id);
+
+      }
+    },
+  },
+  data(){
+    return {
+      currUser: "",
+      contributedProjects: [],
+      proposedProjects: [],
+      amountContributed: 0
+    }
+  },
+  async mounted() {
+    let id = parseInt(localStorage.getItem('userId'))
+    const data = await Promise.all([
+      fetch(`${url}/accounts/${id == undefined ? '' : id }`),
+      fetch(`${url}/projects`)
+    ])
+    const response1 = await data[0].json();
+    const response2 = await data[1].json();
+    console.log(response1, response2);
+    this.contributedProjects = response1[0].contributions;
+    console.log(this.contributedProjects);
+    this.amountContributed = this.contributedProjects.reduce((a,b)=>{
+      return a + b.amount_contributed
+    }, 0)
+
+    this.proposedProjects = response2.filter((e) => {
+      return e.owner_id === id
+    })
+
+    console.log(this.proposedProjects);
+  },
 }
 </script>

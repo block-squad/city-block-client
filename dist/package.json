@@ -1,0 +1,10 @@
+{
+ "name": "city-block-client",
+ "version": "1.0.0",
+ "description": "A Vue.js project",
+ "author": "EllenDown <ellenldowning@gmail.com>",
+ "private": true,
+ "scripts": {
+   "postinstall": "npm install express"
+ }
+}
