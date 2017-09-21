@@ -51,11 +51,7 @@ import education from '../assets/education.jpg'
 
 export default {
   name: 'project',
-<<<<<<< HEAD
-  props: ['project', 'contribute'],
-=======
   props: ['project', 'isSignedIn'],
->>>>>>> a520c4965cdab3216efc10cc2b99f2bd7085f548
   computed: {
     daysLeft() {
       let deadline = new Date(`
