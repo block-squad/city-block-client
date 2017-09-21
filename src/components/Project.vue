@@ -14,20 +14,24 @@
             </div>
             <div class="media-content">
               <p class="title is-4">{{project.name}}</p>
-              <p class="subtitle is-6">contract address</p>
+              <!-- <p class="subtitle is-6">contract address</p> -->
             </div>
           </div>
           <div class="content">
             {{project.desc}}
             <br>
-            <div class="columns">
-              <div class="column">
+            <br>
+            <div class="">
+              <div class="">
+                <span class="tag is-dark">Date Started</span>
                 {{daysLeft}}
               </div>
-              <div class="column">
+              <div class="">
+                <span class="tag is-dark">Contributed</span>
                 ${{project.money}}
               </div>
-              <div class="column">
+              <div class="">
+                <span class="tag is-dark">Target</span>
                 ${{project.target}}
               </div>
             </div>
@@ -60,11 +64,12 @@ export default {
   computed: {
     daysLeft() {
       let deadline = new Date(`
-        ${new Date(this.project.date).getMonth() + 3} /
-        ${new Date(this.project.date).getDate()} /
+        ${new Date(this.project.date).getMonth() + 1}/
+        ${new Date(this.project.date).getDate() + 1}/
         ${new Date(this.project.date).getFullYear()}
-        `)
-      return `${deadline.getMonth()}/${deadline.getDate()}/${deadline.getFullYear()}`
+      `)
+      deadline.setMonth(deadline.getMonth() + 3)
+      return `${deadline.getMonth() + 1}/${deadline.getDate()}/${deadline.getFullYear()}`
     }
   },
   methods: {
