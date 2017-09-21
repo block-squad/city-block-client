@@ -98,10 +98,10 @@ export default {
         let provider = this.web3Provider;
         let deployedInstance;
         let MyContract = contract(CrowdFunding);
-        console.log(provider);
+        let account = web3.eth.defaultAccount
         MyContract.setProvider(provider)
         MyContract.defaults({
-          from: '0x1127f32f3bFa30B18ad837085d370aC83fc22ea7',
+          from: account,
         })
 
         MyContract.deployed().then(function(instance){
