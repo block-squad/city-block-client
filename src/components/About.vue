@@ -2,21 +2,6 @@
   <div class="about">
     <div class="hero-body">
     </div>
-    <!-- <brand></brand>
-    <section class="section">
-      <div class="container">
-        <div class="columns">
-          <div class="column">
-            <h1>About City Block</h1>
-            <p>A crazy idea by a couple kids in a class who thougth they could</p>
-          </div>
-          <div class="column">
-            <h2>How to Use City Block</h2>
-            <p>Make sure you have Meta mask or your wallet address make contributions etc </p>
-          </div>
-        </div>
-      </div>
-    </section> -->
   </div>
 </template>
 
@@ -35,6 +20,6 @@ export default {
   .hero-body {
     background: url('../assets/cb-about.jpg') no-repeat center center fixed;
     background-size: cover;
-    height: 90vh;
+    height: 85vh;
   }
 </style>

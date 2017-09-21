@@ -1,34 +1,37 @@
 <template>
   <section class="newproject section container">
-    <form v-on:submit.prevent="newProject">
-      <b-field label="Project Name">
-        <input v-model="newProjectForm.name" class="input" type="text"></input>
-      </b-field>
-      <b-field label="Type">
-        <b-select v-model="newProjectForm.type" placeholder="Select type">
-          <option>Parks / Rec</option>
-          <option>Streets / Roads</option>
-          <option>Education</option>
-          <option>Building</option>
-          <option>Culture</option>
-          <option>Environment</option>
-        </b-select>
-      </b-field>
-      <b-field label="Description">
-        <b-input v-model="newProjectForm.desc" type="textarea"></b-input>
-      </b-field>
-      <b-field label="Target Amount">
-        <b-input v-model="newProjectForm.target" type="number" placeholder="0.00"></b-input>
-      </b-field>
-      <div class="field is-grouped">
-        <div class="control">
-          <button class="button is-primary">Submit</button>
+    <div class="box">
+      <form v-on:submit.prevent="newProject">
+        <h1 class="title">Create New Project</h1>
+        <b-field label="Project Name">
+          <input v-model="newProjectForm.name" class="input" type="text"></input>
+        </b-field>
+        <b-field label="Type">
+          <b-select v-model="newProjectForm.type" placeholder="Select type">
+            <option>Parks / Rec</option>
+            <option>Streets / Roads</option>
+            <option>Education</option>
+            <option>Building</option>
+            <option>Culture</option>
+            <option>Environment</option>
+          </b-select>
+        </b-field>
+        <b-field label="Description">
+          <b-input v-model="newProjectForm.desc" type="textarea"></b-input>
+        </b-field>
+        <b-field label="Target Amount">
+          <b-input v-model="newProjectForm.target" type="number" placeholder="0.00"></b-input>
+        </b-field>
+        <div class="field is-grouped">
+          <div class="control">
+            <button class="button is-dark">Submit</button>
+          </div>
+          <div class="control">
+            <button class="button is-link">Cancel</button>
+          </div>
         </div>
-        <div class="control">
-          <button class="button is-link">Cancel</button>
-        </div>
-      </div>
-    </form>
+      </form>
+    </div>
 
   </section>
 
@@ -84,3 +87,11 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+.box {
+  width: 50vw;
+  margin-left: auto;
+  margin-right: auto;
+}
+</style>

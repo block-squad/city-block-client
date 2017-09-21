@@ -4,15 +4,13 @@
       <div class="container">
         <div class="content has-text-centered">
           <p>
-            <strong>cityBlock</strong> by <a href="https://github.com/block-squad/">The Block Squad </a>. The source code is licensed
-            <a href="http://opensource.org/licenses/mit-license.php">MIT</a>. The website content
-            is licensed <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY NC SA 4.0</a>.
+            <img height="30" width="100" src="../assets/logo.jpg" alt="City Block"> by <a href="https://github.com/block-squad/">The Block Squad</a>.
           </p>
-          <p>
-            <a class="icon" href="https://github.com/jgthms/bulma">
-              <!-- <i class="fa fa-github"></i> -->
-            </a>
-          </p>
+          <h1 class="heading">Team Members</h1>
+          <a href="#" target="_blank">Ellen Downing</a> |
+          <a href="#" target="_blank">Matt Drumheller</a> |
+          <a href="#" target="_blank">Maria Jose Mata</a> |
+          <a href="#" target="_blank">Erin Shaben</a>
         </div>
       </div>
     </footer>

@@ -1,34 +1,37 @@
 <template>
   <section class="signUp section">
     <div class="container">
-      <form v-on:submit="signUp">
-        <div class="field">
-        <label class="label">Username</label>
-        <div class="control">
-          <input v-model="signUpForm.username" class="input" type="text" placeholder="Username">
-        </div>
+      <div class="box">
+        <form v-on:submit="signUp">
+          <h1 class="title">Sign Up</h1>
+          <div class="field">
+            <label class="label">Username</label>
+            <div class="control">
+              <input v-model="signUpForm.username" class="input" type="text" placeholder="Username">
+            </div>
+          </div>
+          <div class="field">
+            <label class="label">Password</label>
+            <div class="control">
+              <input v-model="signUpForm.password" class="input" type="password" placeholder="Password">
+            </div>
+          </div>
+          <div class="field">
+            <label class="label">Wallet Address</label>
+            <div class="control">
+              <input v-model="signUpForm.eth_wallet_key" class="input" type="text" placeholder="0x0000000000">
+            </div>
+          </div>
+          <div class="field is-grouped">
+            <div class="control">
+              <button class="button is-dark">Submit</button>
+            </div>
+            <div class="control">
+              <button class="button is-link">Cancel</button>
+            </div>
+          </div>
+        </form>
       </div>
-      <div class="field">
-        <label class="label">Password</label>
-        <div class="control">
-          <input v-model="signUpForm.password" class="input" type="password" placeholder="Password">
-        </div>
-      </div>
-      <div class="field">
-        <label class="label">Wallet Address</label>
-        <div class="control">
-          <input v-model="signUpForm.eth_wallet_key" class="input" type="text" placeholder="0x0000000000">
-        </div>
-      </div>
-      <div class="field is-grouped">
-        <div class="control">
-          <button class="button is-primary">Submit</button>
-        </div>
-        <div class="control">
-          <button class="button is-link">Cancel</button>
-        </div>
-      </div>
-      </form>
     </div>
   </section>
 </template>
@@ -75,3 +78,11 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+  .box {
+    width: 50vw;
+    margin-left: auto;
+    margin-right: auto;
+  }
+</style>
