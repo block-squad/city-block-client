@@ -1,17 +1,21 @@
-# About
-[cityBlock](http://city-block.herokuapp.com/#/) is a crowdfunding application that utilizes blockchain technology and smart contracts to support urban development projects. Using smart contracts (virtual agreements encoded and held in the blockchain), community members can create and contribute Ether (cryptocurrency) to urban development projects. If funding target amount is raised by the deadline, the city is held responsible for carrying out the project.
+## About
+[cityBLOCK](http://city-block.herokuapp.com/#/) is a crowdfunding application that utilizes blockchain technology and smart contracts to support urban development projects. Using smart contracts (virtual agreements encoded and held in the blockchain), community members can create and contribute Ether (cryptocurrency) to urban development projects. If the funding target amount is raised by the deadline, the city is held responsible for carrying out the project.
 
-## Team
-Built in September 2017 by [The Block Squad](https://github.com/block-squad), a group of students at Galvanize in Denver, CO:
+#### Made with ♥ by [Block Squad](https://github.com/block-squad):
 * [Ellen Downing](https://github.com/EllenDown)
 * [Matt Drumheller](https://github.com/MattDrummy)
 * [Maria Jose Mata](https://github.com/maria-mata)
 * [Erin Shaben](https://github.com/eshaben)
 
-## Tech Notes
-* Client built with Vue.js, Truffle.js, Metamask, Testrpc, Solidity, and Heroku.
+#### Tech Notes
+* Client built with Vue.js, Solidity, Truffle.js, Metamask, Testrpc, and Heroku.
 * Server built with Node.js, Express.js, Knex.js, PostgreSQL, and Heroku.
-* View the [server repo](https://github.com/block-squad/city-block-server) or [deployed server](http://city-block-server.herokuapp.com/).
+* [Server repo](https://github.com/block-squad/city-block-server)
+* [Deployed server](http://city-block-server.herokuapp.com/)
 
-## How to Use
-* Coming soon...
+### How to Use
+* You will need an [Ethereum](https://ethereum.org/) wallet and [MetaMask](https://metamask.io/) to interact with this application.
+* In MetaMask (upper right corner), set the network to `localhost 8545`.
+* Create an account on cityBLOCK using your wallet's public key (i.e. account address).
+* Once logged in, you can post mock urban development projects and/or contribute mock funds to the project of your choice.
+* All projects have a target fundraising goal and deadline. If the target amount is not met by the deadline, any funds raised will be returned to the contributors.
