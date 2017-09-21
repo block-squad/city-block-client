@@ -34,7 +34,7 @@
           </div>
         </div>
         <footer v-if="isSignedIn" class="card-footer">
-          <a href="#" v-on:click="method1" class="card-footer-item">Contribute</a>
+          <a v-on:click="method1" class="card-footer-item" v-bind:id="project.id">Contribute</a>
         </footer>
       </div>
     </div>
@@ -52,6 +52,7 @@ import contract from "truffle-contract"
 import CrowdFunding from '../../build/contracts/CrowdFunding.json'
 import Web3 from 'web3'
 
+const url = "https://city-block-server.herokuapp.com"
 
 export default {
   name: 'project',
@@ -85,6 +86,7 @@ export default {
       }
     },
       method1(event){
+        console.log(event.target.id);
         if (typeof this.web3 !== 'undefined') {
           this.web3Provider = web3.currentProvider;
           this.web3 = new Web3(web3.currentProvider)
@@ -111,6 +113,24 @@ export default {
         }).then(function(result){
           console.log("success");
           console.log(result);
+          const currUser = localStorage.getItem('userId')
+          const settings = {
+            method: 'POST',
+            headers: {
+              'Accept': 'application/json',
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+              amount: 1,
+              project_id: event.target.id,
+              account_id: currUser
+            })
+          };
+          fetch(`${url}/contributions`, settings)
+          .then(data => data.json())
+          .then(data => {
+            location.href = '/'
+          })
         })
       }
     }
