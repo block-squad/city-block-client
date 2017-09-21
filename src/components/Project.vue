@@ -14,20 +14,24 @@
             </div>
             <div class="media-content">
               <p class="title is-4">{{project.name}}</p>
-              <p class="subtitle is-6">contract address</p>
+              <!-- <p class="subtitle is-6">contract address</p> -->
             </div>
           </div>
           <div class="content">
             {{project.desc}}
             <br>
-            <div class="columns">
-              <div class="column">
+            <br>
+            <div class="">
+              <div class="">
+                <span class="tag is-dark">Date Started</span>
                 {{daysLeft}}
               </div>
-              <div class="column">
+              <div class="">
+                <span class="tag is-dark">Contributed</span>
                 ${{project.money}}
               </div>
-              <div class="column">
+              <div class="">
+                <span class="tag is-dark">Target</span>
                 ${{project.target}}
               </div>
             </div>
