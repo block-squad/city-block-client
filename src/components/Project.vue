@@ -42,6 +42,7 @@
             <input v-model="amount" class="input" type="number" placeholder="Amount" value=""></input>
           </b-field>
           <a v-on:click="method1" v-if="projectNotMet" class="card-footer-item" v-bind:id="project.id">Contribute</a>
+          <p v-else class="card-footer-item goal-met"><strong>Project Goal Has Been Met</strong></p>
         </footer>
       </div>
     </div>
@@ -174,5 +175,8 @@ export default {
   }
   .amount {
     padding-right: .5em;
+  }
+  .card-footer {
+    height: 4em;
   }
 </style>
