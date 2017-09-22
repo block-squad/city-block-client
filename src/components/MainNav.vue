@@ -15,8 +15,8 @@
         <div class="navbar-menu" v-bind:class="{'is-active': isMobile}">
           <div class="navbar-end">
             <router-link to='/about' class="navbar-item">About</router-link>
-            <router-link v-if="!isSignedIn"  to='/signup' class="navbar-item">Sign Up</router-link>
             <router-link v-if="!isSignedIn"  to='/signin' class="navbar-item">Sign In</router-link>
+            <router-link v-if="!isSignedIn"  to='/signup' class="navbar-item">Sign Up</router-link>
             <router-link v-if="isSignedIn" to='/newproject' class="navbar-item">New Project</router-link>
             <div v-if="isSignedIn" class="navbar-item">
               <a v-on:click="logout" class="button is-dark">Logout</a>
