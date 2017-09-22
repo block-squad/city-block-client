@@ -32,7 +32,6 @@
 
 <script>
 const url = "https://city-block-server.herokuapp.com"
-// const url = "http://localhost:3000"
 
 export default {
   name: 'signin',
@@ -69,18 +68,15 @@ export default {
     }
   }
 }
-
 </script>
 
 <style scoped>
   .modal-card {
     width: auto;
   }
-
   .box {
     width: 50vw;
     margin-left: auto;
     margin-right: auto;
   }
-
 </style>

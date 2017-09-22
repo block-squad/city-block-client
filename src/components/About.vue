@@ -51,7 +51,6 @@ export default {
     border-radius: 10px;
     background-color: rgb(244, 244, 244);
   }
-
   .title {
     font-family: 'Megrim', cursive;
     font-size: 3em;

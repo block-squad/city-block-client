@@ -32,9 +32,7 @@
         </div>
       </form>
     </div>
-
   </section>
-
 </template>
 
 <script>
@@ -90,7 +88,6 @@ export default {
         this.web3Provider = web3.currentProvider;
         this.web3 = new Web3(web3.currentProvider)
       } else {
-        console.log('Injected web3 Not Found!!!')
         this.web3Provider = new Web3(new Web3.providers.HttpProvider('http://localhost:8545'));
         this.web3 = new Web3(this.web3Provider)
       }
@@ -104,17 +101,13 @@ export default {
         from: account,
       })
       MyContract.new().then(function(instance){
-        console.log(instance);
         deployedInstance = instance;
         return deployedInstance.newCampaign(account, target, new Date())
       }).then(function(result){
-        console.log("success");
-        console.log(result);
       })
     }
   }
 }
-
 </script>
 
 <style scoped>

@@ -4,7 +4,6 @@
       <div class="card">
         <div class="card-image">
           <figure class="image is-4by3">
-            <!-- <img src="../assets/street.jpg" alt=""> -->
             <img v-bind:src="image(project.type)">
           </figure>
         </div>
@@ -14,7 +13,6 @@
             </div>
             <div class="media-content">
               <p class="title is-4">{{project.name}}</p>
-              <!-- <p class="subtitle is-6">contract address</p> -->
             </div>
           </div>
           <div class="content">
@@ -104,72 +102,69 @@ export default {
         return 'http://bulma.io/images/placeholders/1280x960.png'
       }
     },
-      method1(event){
-        event.preventDefault();
-        let amountContribute = this.amount
-        let currentMoney = this.money
+    method1(event){
+      event.preventDefault();
+      let amountContribute = this.amount
+      let currentMoney = this.money
 
-        if (typeof this.web3 !== 'undefined') {
-          this.web3Provider = web3.currentProvider;
-          this.web3 = new Web3(web3.currentProvider)
-        } else {
-          console.log('Injected web3 Not Found!!!')
-          this.web3Provider = new Web3(new Web3.providers.HttpProvider('http://localhost:8545'));
-          this.web3 = new Web3(this.web3Provider)
-        }
+      if (typeof this.web3 !== 'undefined') {
+        this.web3Provider = web3.currentProvider;
+        this.web3 = new Web3(web3.currentProvider)
+      } else {
+        this.web3Provider = new Web3(new Web3.providers.HttpProvider('http://localhost:8545'));
+        this.web3 = new Web3(this.web3Provider)
+      }
 
-        let provider = this.web3Provider;
-        let deployedInstance;
-        let MyContract = contract(CrowdFunding);
-        let account = web3.eth.defaultAccount
-        MyContract.setProvider(provider)
-        MyContract.defaults({
-          from: account,
-          value: amountContribute
-        })
+      let provider = this.web3Provider;
+      let deployedInstance;
+      let MyContract = contract(CrowdFunding);
+      let account = web3.eth.defaultAccount
+      MyContract.setProvider(provider)
+      MyContract.defaults({
+        from: account,
+        value: amountContribute
+      })
 
-        MyContract.deployed()
-          .then(function(instance){
-            deployedInstance = instance;
-            return deployedInstance.contribute(event.target.id, amountContribute)
-          }).then(function(result){
-            const currUser = localStorage.getItem('userId')
-            const settings = {
-              method: 'POST',
-              headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json'
-              },
-              body: JSON.stringify({
-                amount: amountContribute,
-                project_id: event.target.id,
-                account_id: currUser
-              })
-            };
-            const patchSettings = {
-              method: 'PATCH',
-              headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json'
-              },
-              body: JSON.stringify({
-                money: parseFloat(currentMoney) + parseFloat(amountContribute)
-              })
-            };
-            fetch(`${url}/contributions`, settings)
-            .then(data => {
-            fetch(`${url}/projects/${event.target.id}`, patchSettings)
-              .then(data => data.json())
-              .then(data =>{
-                location.href = '/'
-              })
+      MyContract.deployed()
+        .then(function(instance){
+          deployedInstance = instance;
+          return deployedInstance.contribute(event.target.id, amountContribute)
+        }).then(function(result){
+          const currUser = localStorage.getItem('userId')
+          const settings = {
+            method: 'POST',
+            headers: {
+              'Accept': 'application/json',
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+              amount: amountContribute,
+              project_id: event.target.id,
+              account_id: currUser
+            })
+          };
+          const patchSettings = {
+            method: 'PATCH',
+            headers: {
+              'Accept': 'application/json',
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+              money: parseFloat(currentMoney) + parseFloat(amountContribute)
+            })
+          };
+          fetch(`${url}/contributions`, settings)
+          .then(data => {
+          fetch(`${url}/projects/${event.target.id}`, patchSettings)
+            .then(data => data.json())
+            .then(data =>{
+              location.href = '/'
             })
           })
-        }
+        })
       }
-    }
-
-
+  }
+}
 </script>
 
 <style scoped>
@@ -177,7 +172,6 @@ export default {
     height: 40vh;
     overflow: scroll;
   }
-
   .amount {
     padding-right: .5em;
   }

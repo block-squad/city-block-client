@@ -66,7 +66,6 @@ export default {
       fetch(`${url}/auth/signup`, settings)
       .then(response => response.json())
       .then(response => {
-       console.log(response);
        if (response.token) {
          localStorage.setItem('token', response.token)
          localStorage.setItem('userId', JSON.stringify(response.user.id))

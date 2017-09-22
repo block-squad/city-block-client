@@ -45,7 +45,6 @@ export default {
       let id = localStorage.getItem('userId');
       if (id) {
         this.currUser = parseInt(id);
-
       }
     },
   },
@@ -75,11 +74,9 @@ export default {
     this.amountContributed = response1[0].contributions.reduce((a,b)=>{
       return a + b.amount_contributed
     }, 0)
-
     this.proposedProjects = response2.filter((e) => {
       return e.owner_id === id
     })
-
   },
 }
 </script>
