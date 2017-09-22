@@ -38,12 +38,12 @@
           </div>
         </div>
         <footer v-if="isSignedIn" class="card-footer">
-          <b-field class="card-footer-item">
+          <b-field v-if="projectNotMet" class="card-footer-item">
             <span class="amount">Amount: </span>
             <br>
             <input v-model="amount" class="input" type="number" placeholder="Amount" value=""></input>
           </b-field>
-          <a v-on:click="method1" class="card-footer-item" v-bind:id="project.id">Contribute</a>
+          <a v-on:click="method1" v-if="projectNotMet" class="card-footer-item" v-bind:id="project.id">Contribute</a>
         </footer>
       </div>
     </div>
@@ -68,7 +68,8 @@ export default {
   props: ['project', 'isSignedIn'],
   data(){
     return {
-      amount: 0.0
+      amount: 0.0,
+      money: this.project.money
     }
   },
   computed: {
@@ -80,6 +81,9 @@ export default {
       `)
       deadline.setMonth(deadline.getMonth() + 3)
       return `${deadline.getMonth() + 1}/${deadline.getDate()}/${deadline.getFullYear()}`
+    },
+    projectNotMet(){
+      return this.project.money < this.project.target
     }
   },
   methods: {
@@ -102,8 +106,8 @@ export default {
     },
       method1(event){
         event.preventDefault();
-
         let amountContribute = this.amount
+        let currentMoney = this.money
 
         if (typeof this.web3 !== 'undefined') {
           this.web3Provider = web3.currentProvider;
@@ -142,10 +146,23 @@ export default {
                 account_id: currUser
               })
             };
+            const patchSettings = {
+              method: 'PATCH',
+              headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+              },
+              body: JSON.stringify({
+                money: parseFloat(currentMoney) + parseFloat(amountContribute)
+              })
+            };
             fetch(`${url}/contributions`, settings)
-            .then(data => data.json())
             .then(data => {
-              location.href = '/'
+            fetch(`${url}/projects/${event.target.id}`, patchSettings)
+              .then(data => data.json())
+              .then(data =>{
+                location.href = '/'
+              })
             })
           })
         }

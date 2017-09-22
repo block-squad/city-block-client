@@ -65,7 +65,6 @@ export default {
     ])
     const response1 = await data[0].json();
     const response2 = await data[1].json();
-    console.log(response1, response2);
     let projectList = [];
     response1[0].contributions.forEach((e)=>{
       if (!projectList.includes(e.name)) {
@@ -73,7 +72,6 @@ export default {
       }
     });
     this.contributedProjects = projectList
-    console.log(this.contributedProjects);
     this.amountContributed = response1[0].contributions.reduce((a,b)=>{
       return a + b.amount_contributed
     }, 0)
@@ -82,7 +80,6 @@ export default {
       return e.owner_id === id
     })
 
-    console.log(this.proposedProjects);
   },
 }
 </script>
