@@ -101,7 +101,10 @@ export default {
       }
     },
       method1(event){
+        event.preventDefault();
+
         let amountContribute = this.amount
+
         if (typeof this.web3 !== 'undefined') {
           this.web3Provider = web3.currentProvider;
           this.web3 = new Web3(web3.currentProvider)
@@ -111,7 +114,6 @@ export default {
           this.web3 = new Web3(this.web3Provider)
         }
 
-        event.preventDefault();
         let provider = this.web3Provider;
         let deployedInstance;
         let MyContract = contract(CrowdFunding);
@@ -122,37 +124,29 @@ export default {
           value: amountContribute
         })
 
-        MyContract.deployed().then(function(instance){
-          deployedInstance = instance;
-          return deployedInstance.contribute(event.target.id, amountContribute)
-        }).then(function(result){
-          result.send(web3.toWei(1, "ether")).then(function(result) {
-            console.log("this is it");
-          });
-          console.log("did it work");
-          console.log(result);
-          return deployedInstance.checkGoalReached(event.target.id)
-        }).then(function(result) {
-          console.log('success');
-          console.log(result);
-        })
-          const currUser = localStorage.getItem('userId')
-          const settings = {
-            method: 'POST',
-            headers: {
-              'Accept': 'application/json',
-              'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-              amount: amountContribute,
-              project_id: event.target.id,
-              account_id: currUser
+        MyContract.deployed()
+          .then(function(instance){
+            deployedInstance = instance;
+            return deployedInstance.contribute(event.target.id, amountContribute)
+          }).then(function(result){
+            const currUser = localStorage.getItem('userId')
+            const settings = {
+              method: 'POST',
+              headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+              },
+              body: JSON.stringify({
+                amount: amountContribute,
+                project_id: event.target.id,
+                account_id: currUser
+              })
+            };
+            fetch(`${url}/contributions`, settings)
+            .then(data => data.json())
+            .then(data => {
+              location.href = '/'
             })
-          };
-          fetch(`${url}/contributions`, settings)
-          .then(data => data.json())
-          .then(data => {
-            // location.href = '/'
           })
         }
       }
