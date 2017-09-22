@@ -7,7 +7,7 @@
             <p class="title">Projects</p>
             <ul>
               <li v-for="project in contributedProjects">
-                {{project.name}}
+                {{project}}
               </li>
             </ul>
           </div>
@@ -66,9 +66,15 @@ export default {
     const response1 = await data[0].json();
     const response2 = await data[1].json();
     console.log(response1, response2);
-    this.contributedProjects = response1[0].contributions;
+    let projectList = [];
+    response1[0].contributions.forEach((e)=>{
+      if (!projectList.includes(e.name)) {
+        projectList.push(e.name)
+      }
+    });
+    this.contributedProjects = projectList
     console.log(this.contributedProjects);
-    this.amountContributed = this.contributedProjects.reduce((a,b)=>{
+    this.amountContributed = response1[0].contributions.reduce((a,b)=>{
       return a + b.amount_contributed
     }, 0)
 
