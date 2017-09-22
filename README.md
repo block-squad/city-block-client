@@ -16,6 +16,8 @@
 ### How to Use
 * You will need an [Ethereum](https://ethereum.org/) wallet and [MetaMask](https://metamask.io/) to interact with this application.
 * In MetaMask (upper right corner), set the network to `localhost 8545`.
+* In the cli/terminal start the testrpc (this is the test network to run the contract on) `testrpc --network-id 1505856162245`.
+* Copy one of the private keys, and then in MetaMask import the account using that private key.
 * Create an account on cityBLOCK using your wallet's public key (i.e. account address).
 * Once logged in, you can post mock urban development projects and/or contribute mock funds to the project of your choice.
 * All projects have a target fundraising goal and deadline. If the target amount is not met by the deadline, any funds raised will be returned to the contributors.
